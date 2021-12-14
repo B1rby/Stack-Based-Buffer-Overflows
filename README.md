@@ -1,4 +1,4 @@
-# Stack-Based-Buffer-Overflows-on-Windows-x86
+# Stack-Based-Buffer-Overflows-on-Linux-x86
 Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox Academy
 
 Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow. 
