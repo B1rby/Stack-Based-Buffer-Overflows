@@ -9,4 +9,7 @@ This vulnerability can be more or less difficult to exploit depending on the sec
 - Data Execution Prevention (DEP)
 
 In this writeup you will learn how I exploit a binary with a simple stack-based buffer overflow without any bypassing to do etc. And may be learn new things about stack-based buffer overflow.
+
+
+
 *Thakur, A. S. (2019, December 4). Stack overflow vulnerability. Hacker Noon. Retrieved December 14, 2021, from https://hackernoon.com/stack-overflow-vulnerability-xou2bbm*
