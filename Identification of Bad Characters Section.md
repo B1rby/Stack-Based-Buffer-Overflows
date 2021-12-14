@@ -1,5 +1,7 @@
 # Identification of Bad Characters Section
 
+![image](https://user-images.githubusercontent.com/87600765/146062068-27f43e9a-476f-4d91-9d9f-b02b562e665f.png)
+
 We have to search the other bad characters. We know that  `\x00`, `\x09` and `\x0a` are bad characters so the chars's size after removed bad characters is: 
 ```md
 Buffer = "\x55" * (1040 - 253 - 4) = 783
