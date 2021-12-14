@@ -7,6 +7,9 @@ This vulnerability can be more or less difficult to exploit depending on the sec
 - Canaries
 - Address Space Layout Randomization (ASLR)
 - Data Execution Prevention (DEP)
+- Relocation Read-Only (RELRO)
+- Position Independent Executable (PIE)
+- No Execute (NX)
 
 In this writeup you will learn how I exploit a binary with a simple stack-based buffer overflow without any bypassing to do etc. And may be learn new things about stack-based buffer overflow.
 
