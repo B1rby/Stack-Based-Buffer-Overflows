@@ -1,4 +1,4 @@
-# CPU Registers Section
+# Take Control of EIP Section
 ![Pasted image 20211127181005](https://user-images.githubusercontent.com/87600765/146052962-3bb254ec-a803-452b-af8b-1211167f5a87.png)
  Now we know that eip can be overwritten with 1036 + 4 bytes we can verify it with this command:
 ```nasm
