@@ -164,7 +164,7 @@ Finally we can determine the offset thanks to the tool "pattern_offset".
 └─# /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q 0x37714336                   130 ⨯
 [*] Exact match at offset 2060
 ```
-###### Buffer
+### Buffer
 ![Pasted image 20211212200540](https://user-images.githubusercontent.com/87600765/146049130-329ef7cf-47b0-4f1a-8ebc-cdcef9005d36.png)
 ![Pasted image 20211212200620](https://user-images.githubusercontent.com/87600765/146049177-93a85c32-c3b2-4f15-a3e4-49f1e5d796c4.png)
 
@@ -234,7 +234,7 @@ Often it can be useful to insert some `no operation instruction` (`NOPS`) before
    Shellcode = "\x44" * 150
    EIP = "\x66" * 4
 ```
-##### Buffer
+### Buffer
 ![Pasted image 20211212212346](https://user-images.githubusercontent.com/87600765/146050433-7d1247eb-1109-4105-b52e-75c5c134bb2f.png)
 #### Identification of bad characters
 Now we have to identify bad characters for running the program correctly.
@@ -316,7 +316,7 @@ Buffer = "\x55" * (2064 - 253 - 4) = 1807
  
    EIP = "\x66" * 4
 ```
-##### Senc CHARS-Without `\x09`  &  `\x0a`
+##### Send CHARS-Without `\x09`  &  `\x0a`
 ```nasm
 (gdb)run $(python -c "print '\x55' * 1807 + '\x01\x02\x03\x04\x05\x06\x07\x08\x0b\x0c...<SNIP>...\xfc\xfd\xfe\xff' + '\x66' * 4")
 (gdb)x/3000xb $esp
@@ -384,7 +384,7 @@ we now have to choose an address to which we refer the `EIP` and which reads and
 ...<SNIP>...
 ```
 In this case I want to choose the adress `0xffffd72c`.
-##### Buffer
+### Buffer
 ![image](https://user-images.githubusercontent.com/87600765/146051050-6f7fcc14-30d4-4774-8b8f-adce6628b7f6.png)
 So now we just have to replace `'\x64' * 4*`  to `0xffffd72c` but in little endian which is `0x2cd7ffff` which is `\x2c\xd7\xff\xff`.
 ##### Notes
