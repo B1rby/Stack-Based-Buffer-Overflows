@@ -1,4 +1,4 @@
-# Take Control of EIP Section
+# Determine the Length for Shellcode
 ![Pasted image 20211127183951](https://user-images.githubusercontent.com/87600765/146053798-c6feaf70-04b1-4be8-96f8-9cea6718698c.png)
 
 ### We can see that in this image we have 100 bytes of NOPS and 150 bytes of shellcode. 
