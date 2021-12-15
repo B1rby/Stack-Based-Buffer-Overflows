@@ -1,4 +1,4 @@
-# Skill Asessment
+# Skill Assessment
 ### Examination of the binary
 First we can examine the code. 
 
