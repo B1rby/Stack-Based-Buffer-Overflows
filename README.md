@@ -14,7 +14,7 @@ This vulnerability can be more or less difficult to exploit depending on the sec
 
 In this writeup you will learn how I exploit a binary with a simple stack-based buffer overflow without any bypassing to do etc. And may be learn new things about stack-based buffer overflow.
 
-- [Skill Asessment](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Skill-Asessment/Skill%20Asessment.md)
+- [Skill Assessment](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Skill-Asessment/Skill%20Asessment.md)
 - [Stack Based Buffer Overflow](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Stack-Based%20Buffer%20Overflow%20Section.md)
 - [Take Control of EIP](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Take%20Control%20of%20EIP%20Section.md)
 - [Determine the lenght of shellcode](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Determine%20the%20Length%20for%20Shellcode%20Section.md)
