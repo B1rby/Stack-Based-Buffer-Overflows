@@ -1,5 +1,5 @@
 # Stack-Based-Buffer-Overflows-on-Linux-x86 
-![License: MIT](https://img.shields.io/github/license/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86) ![last commit: ](https://img.shields.io/github/last-commit/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86)
+![](https://img.shields.io/github/license/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86) ![](https://img.shields.io/github/last-commit/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86)
 
 ![bof logo 3](https://user-images.githubusercontent.com/87600765/146174485-607fd934-cfea-4435-aa85-fec5fcb293e0.png)
 
