@@ -21,7 +21,7 @@ In this writeup you will learn how I exploit a binary with a simple stack-based 
 - [Identification of bad characters](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Identification%20of%20Bad%20Characters%20Section.md)
 - [Generating shellcode](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Generating%20Shellcode%20Section.md)
 - [Reverse shell](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Reverse%20shell.md)
-- 
+
 
 All the images that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing.
 
