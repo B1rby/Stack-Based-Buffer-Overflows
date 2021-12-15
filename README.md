@@ -1,5 +1,5 @@
 # Stack-Based-Buffer-Overflows-on-Linux-x86
-![bof logo 2](https://user-images.githubusercontent.com/87600765/146174296-e82b9ed3-9cfd-461a-a6ad-4666434016a9.png)
+![bof logo 3](https://user-images.githubusercontent.com/87600765/146174485-607fd934-cfea-4435-aa85-fec5fcb293e0.png)
 
 Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox Academy
 
