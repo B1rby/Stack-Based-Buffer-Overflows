@@ -1,4 +1,6 @@
 # Stack-Based-Buffer-Overflows-on-Linux-x86 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) 
+
 ![bof logo 3](https://user-images.githubusercontent.com/87600765/146174485-607fd934-cfea-4435-aa85-fec5fcb293e0.png)
 
 Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox Academy. The module was made by Cry0l1t3. 
