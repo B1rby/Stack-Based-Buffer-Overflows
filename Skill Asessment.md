@@ -409,6 +409,6 @@ htb-student@nixbof32skills:~$ ./leave_msg $(python -c "print '\x55' * 1841 + '\x
 ![Pasted image 20211213202658](https://user-images.githubusercontent.com/87600765/146051300-1469520b-ed6c-4dd1-892a-c0fc7e1c2f0d.png)
 ![Pasted image 20211213202831](https://user-images.githubusercontent.com/87600765/146051365-000e87e4-4e31-42b3-bb20-d24bb5313e22.png)
 
-All the images that you see is providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing.
+All the images that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing.
 
 *Academy, H. T. B. (n.d.). HTB Academy : Cyber security training. Cyber Security Training : HTB Academy. Retrieved December 14, 2021, from https://academy.hackthebox.com/module/details/318*
