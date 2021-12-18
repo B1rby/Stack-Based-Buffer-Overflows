@@ -8,11 +8,12 @@ Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox
 Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow. 
 
 This vulnerability can be more or less difficult to exploit depending on the security put on the binary. The securities can be:
-- Canaries
-- Address Space Layout Randomization (ASLR)
-- Data Execution Prevention (DEP)
-- Relocation Read-Only (RELRO)
-- Position Independent Executable (PIE)
+- [Canaries](https://en.wikipedia.org/wiki/Buffer_overflow_protection)
+- [Address Space Layout Randomization (ASLR)](https://en.wikipedia.org/wiki/Address_space_layout_randomization)
+- [Data Execution Prevention (DEP)](https://docs.microsoft.com/en-us/windows/win32/memory/data-execution-prevention)
+- [No eXecution (NX) is the equivalent of DEP in Linux](https://docs.microsoft.com/en-us/windows/win32/win7appqual/dep-nx-protection)
+- [Relocation Read-Only (RELRO)](https://ctf101.org/binary-exploitation/relocation-read-only/)
+- [Position Independent Executable (PIE)](https://en.wikipedia.org/wiki/Position-independent_code)
 
 In this writeup you will learn how I exploit a binary with a simple stack-based buffer overflow without any bypassing to do etc. And may be learn new things about stack-based buffer overflow.
 
@@ -24,7 +25,7 @@ In this writeup you will learn how I exploit a binary with a simple stack-based 
 - [Generating shellcode](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Generating%20Shellcode%20Section.md)
 - [Reverse shell](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Reverse%20shell.md)
 
-**More notes about stack based buffer overflow are coming soon**
+**Module coming soon™**:  How to bypass the NX protection with the Return Oriented Programming (ROP) technique.
 
 All the images that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing.
 
