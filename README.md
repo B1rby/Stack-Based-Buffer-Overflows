@@ -5,6 +5,16 @@
 
 
 Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow. 
+## Steps
+The Buffer Overflow attack is defined by 6 steps:
+1. Crash the binary
+2. Take control of `eip`/`rip`
+3. Determine the lenght of our shellcode
+4. Identify the bad characters
+5. Generating the shellcode
+6. Identification of the return adress
+
+All these steps are **explained** [here](https://github.com/B1rby/Stack-Based-Buffer-Overflows/blob/Skill-Asessment/Skill%20Asessment.md).
 
 This vulnerability can be more or less difficult to exploit depending on the security put on the binary. The securities can be:
 - [Canaries](https://en.wikipedia.org/wiki/Buffer_overflow_protection)
