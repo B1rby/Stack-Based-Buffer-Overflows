@@ -1,7 +1,6 @@
 # Stack-Based-Buffer-Overflows
 ![](https://img.shields.io/badge/-HackTheBox-brightgreen) ![](https://img.shields.io/github/license/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86) ![](https://img.shields.io/github/last-commit/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86) 
 
-![bof logo 3](https://user-images.githubusercontent.com/87600765/146174485-607fd934-cfea-4435-aa85-fec5fcb293e0.png)
 
 Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow. 
 
@@ -15,6 +14,8 @@ This vulnerability can be more or less difficult to exploit depending on the sec
 
 ## Writeup
 Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox Academy. The module was made by Cry0l1t3. In this writeup you will learn how I exploit a binary with a simple stack-based buffer overflow without any bypassing to do etc. And may be learn new things about stack-based buffer overflow.
+
+![bof logo 3](https://user-images.githubusercontent.com/87600765/146174485-607fd934-cfea-4435-aa85-fec5fcb293e0.png)
 
 - [Skill Assessment](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Skill-Asessment/Skill%20Asessment.md)
 - [Stack Based Buffer Overflow](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Stack-Based%20Buffer%20Overflow%20Section.md)
