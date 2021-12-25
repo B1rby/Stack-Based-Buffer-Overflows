@@ -15,7 +15,7 @@ The Buffer Overflow attack is defined by 6 steps:
 6. Identification of the return adress
 
 All these steps are **explained** [here](https://github.com/B1rby/Stack-Based-Buffer-Overflows/blob/Skill-Asessment/Skill%20Asessment.md).
-
+## Protections 
 This vulnerability can be more or less difficult to exploit depending on the security put on the binary. The securities can be:
 - [Canaries](https://en.wikipedia.org/wiki/Buffer_overflow_protection)
 - [Address Space Layout Randomization (ASLR)](https://en.wikipedia.org/wiki/Address_space_layout_randomization)
