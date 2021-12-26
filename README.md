@@ -58,7 +58,7 @@ Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox
 - Available on gitbook
 
 ### Sources
-*A couple of images that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing*
+*A couple of images in the writeup that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing*
 
 *Academy, H. T. B. (n.d.). HTB Academy : Cyber security training. Cyber Security Training : HTB Academy. Retrieved December 14, 2021, from https://academy.hackthebox.com/module/details/318*
 [^1]:*Thakur, A. S. (2019, December 4). Stack overflow vulnerability. Hacker Noon. Retrieved December 14, 2021, from https://hackernoon.com/stack-overflow-vulnerability-xou2bbm*
