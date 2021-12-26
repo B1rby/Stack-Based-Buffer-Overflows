@@ -8,6 +8,8 @@ Stack overflow is a type of buffer overflow vulnerability. When we pour water in
 
 **Example:**
 
+![stack final 1](https://user-images.githubusercontent.com/87600765/147395873-664e6c6d-b363-4d8e-add0-f69979eb7409.png)
+
 Imagine someone want to put 20 bytes of data into a buffer that had only been allocated 8 bytes of space, that type of action is allowed, even though it will most likely cause the program to crash. We can see that the 20 bytes that we sent overwrited the other existing values. The program will crash because the fucntion will try to return to the address of eip which is `0x1234565`. But this value no longer existed. This is known as a buffer overrun or buffer overflow, since the extra 12 bytes of data will overflow and spill out of the allocated memory, overwriting whatever happens to come next. If a critical piece of data is overwritten, the program will crash.
 
 
