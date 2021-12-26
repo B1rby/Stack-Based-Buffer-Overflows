@@ -4,7 +4,13 @@
 ![Image3](https://user-images.githubusercontent.com/87600765/147373294-b205c6a9-82e0-448b-a448-e75f0f1abd0f.png)
 
 
-Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow. 
+Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow[^1] . The stack has a Last-in, First-out (LIFO) which means that we can only `pop` the last argument we `push`ed on the stack. 
+
+**Example:**
+
+Imagine someone want to put 20 bytes of data into a buffer that had only been allocated 8 bytes of space, that type of action is allowed, even though it will most likely cause the program to crash. We can see that the 20 bytes that we sent overwrited the other existing values. The program will crash because the fucntion will try to return to the address of eip which is `0x1234565`. But this value no longer existed. This is known as a buffer overrun or buffer overflow, since the extra 12 bytes of data will overflow and spill out of the allocated memory, overwriting whatever happens to come next. If a critical piece of data is overwritten, the program will crash.
+
+
 ## Steps
 The Buffer Overflow attack is defined by 6 steps:
 1. Crash the binary
@@ -46,7 +52,7 @@ Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox
 - Available on gitbook
 
 ### Sources
-*All the images that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing*
+*A couple of images that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing*
 
 *Academy, H. T. B. (n.d.). HTB Academy : Cyber security training. Cyber Security Training : HTB Academy. Retrieved December 14, 2021, from https://academy.hackthebox.com/module/details/318*
-*Thakur, A. S. (2019, December 4). Stack overflow vulnerability. Hacker Noon. Retrieved December 14, 2021, from https://hackernoon.com/stack-overflow-vulnerability-xou2bbm*
+[^1]:*Thakur, A. S. (2019, December 4). Stack overflow vulnerability. Hacker Noon. Retrieved December 14, 2021, from https://hackernoon.com/stack-overflow-vulnerability-xou2bbm*
