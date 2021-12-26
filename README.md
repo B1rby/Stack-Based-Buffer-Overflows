@@ -49,7 +49,8 @@ Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox
 - [Reverse shell](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Reverse%20shell.md)
 
 ## Coming soon™
-- How to bypass the NX protection with the Return Oriented Programming (ROP) technique.
+- Writeup HTB Academy Stack-Based Buffer Overflows on Windows x86
+- How to bypass NX
 - How to bypass ASLR
 - How to bypass Canaries
 - How to bypass RELRO
