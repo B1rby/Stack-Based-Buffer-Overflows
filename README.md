@@ -4,7 +4,10 @@
 ![Image3](https://user-images.githubusercontent.com/87600765/147373294-b205c6a9-82e0-448b-a448-e75f0f1abd0f.png)
 
 
-Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow[^1] . The stack has a Last-in, First-out (LIFO) which means that we can only `pop` the last argument we `push`ed on the stack. 
+> Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow[^1]. 
+
+## Stack
+The stack has a Last-in, First-out (LIFO) design which means that we can only `pop` the last argument we `push`ed on the stack. 
 
 **Example:**
 
