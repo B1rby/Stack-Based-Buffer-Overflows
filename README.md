@@ -1,5 +1,5 @@
 # Stack-Based-Buffer-Overflows
-![](https://img.shields.io/badge/License-CC--BY--NC--SA%204.0-blue) ![](https://img.shields.io/badge/-HackTheBox-brightgreen) ![](https://img.shields.io/github/last-commit/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86) 
+![](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue) ![](https://img.shields.io/badge/-HackTheBox-brightgreen) ![](https://img.shields.io/github/last-commit/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86) 
 
 ![Image3](https://user-images.githubusercontent.com/87600765/147373294-b205c6a9-82e0-448b-a448-e75f0f1abd0f.png)
 
