@@ -49,13 +49,7 @@ Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox
 - [Reverse shell](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Reverse%20shell.md)
 
 ## Coming soon™
-- Writeup HTB Academy Stack-Based Buffer Overflows on Windows x86
-- How to bypass NX
-- How to bypass ASLR
-- How to bypass Canaries
-- How to bypass RELRO
-- How to bypass PIE
-- Available on gitbook
+Available on gitbook with a Return Oriented Programming module.
 
 ### Sources
 *A couple of images in the writeup that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing*
