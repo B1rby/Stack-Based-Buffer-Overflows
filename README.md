@@ -3,6 +3,11 @@
 
 ![Image3](https://user-images.githubusercontent.com/87600765/147373294-b205c6a9-82e0-448b-a448-e75f0f1abd0f.png)
 
+## Coming soon™
+Available on gitbook with an Introduction to Binary Exploitation module. There will be 3 big sections:
+- Introduction to Assembly Language (Netwide Assembler)
+- Simple stack-based buffer overflows
+- Return Oriented Programming 
 
 > Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow[^1]. 
 
@@ -48,8 +53,7 @@ Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox
 - [Generating shellcode](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Generating%20Shellcode%20Section.md)
 - [Reverse shell](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Reverse%20shell.md)
 
-## Coming soon™
-Available on gitbook with a Return Oriented Programming module.
+
 
 ### Sources
 *A couple of images in the writeup that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing*
