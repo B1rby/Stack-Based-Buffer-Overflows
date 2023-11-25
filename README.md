@@ -3,13 +3,8 @@
 
 ![Image3](https://user-images.githubusercontent.com/87600765/147373294-b205c6a9-82e0-448b-a448-e75f0f1abd0f.png)
 
-## Coming soon™
-Available on gitbook with an Introduction to Binary Exploitation module. There will be 3 big sections:
-- Introduction to Assembly Language (Netwide Assembler)
-- Simple stack-based buffer overflows
-- Return Oriented Programming 
-
-> Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow[^1]. 
+> Stack overflow is a type of buffer overflow vulnerability. When we pour water in a glass more than its capacity the water spills or overflow, similarly when we enter data in a buffer more than its capacity the data overflows to adjacent memory location causing program to crash. This is know as buffer overflow[^1].
+> 
 
 ## Stack
 The stack has a Last-in, First-out (LIFO) design which means that we can only `pop` the last argument we `push`ed on the stack. 
@@ -54,9 +49,34 @@ Writeup about the Stack-Based Buffer Overflows on Linux x86 module of HackThebox
 - [Reverse shell](https://github.com/B1rby/Stack-Based-Buffer-Overflows-on-Linux-x86/blob/Module-Questions/Reverse%20shell.md)
 
 
+# Advanced Stack-Based Buffer Overflow
 
+Assembly:
+- https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md#x86_64-64_bit
+- https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture
+- https://cs.lmu.edu/~ray/notes/nasmtutorial/
+- https://www.nasm.us/xdoc/2.15.05/html/nasmdoc0.html
+- https://guyinatuxedo.github.io/01-intro_assembly/assembly/index.html
+- https://www.youtube.com/watch?v=VQAKkuLL31g&list=PLetF-YjXm-sCH6FrTz4AQhfH6INDQvQSn
+- https://www.tutorialspoint.com/assembly_programming/assembly_introduction.htm
+- https://riptutorial.com/assembly
+- https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-instruction-set-reference-manual-325383.pdf
+
+C (GNU linux system):
+- [Compilation](https://github.com/B1rby/Stack-Based-Buffer-Overflows/blob/main/C/compilation.md)
+- [Pointers in c and Assembly and Memory overview in depth ](https://github.com/B1rby/Stack-Based-Buffer-Overflows/blob/main/C/pointers.md)
+
+Rop techniques to bypass mitigations:
+
+- [ret2mprotect call sys_mprotect (NX)](https://github.com/B1rby/Stack-Based-Buffer-Overflows/blob/main/rop/ret2mprotect/ret2mprotect.md)
+- [ret2libc (NX)](https://github.com/B1rby/Stack-Based-Buffer-Overflows/blob/main/rop/ret2libc/ret2libc.md)
+- [call sys_execve with /bin/sh argument (NX and ASLR)](https://github.com/B1rby/Stack-Based-Buffer-Overflows/blob/main/rop/sys_execve/call%20sys_execve.md)
+   
 ### Sources
 *A couple of images in the writeup that you have seen are providing from the HTB Academy website and the buffer images were modified by me for illustrate what I were doing*
 
 *Academy, H. T. B. (n.d.). HTB Academy : Cyber security training. Cyber Security Training : HTB Academy. Retrieved December 14, 2021, from https://academy.hackthebox.com/module/details/318*
 [^1]:*Thakur, A. S. (2019, December 4). Stack overflow vulnerability. Hacker Noon. Retrieved December 14, 2021, from https://hackernoon.com/stack-overflow-vulnerability-xou2bbm*
+
+### Copyright
+Copyright © Birby 2022. The [Stack-Based-Buffer-Overflows](https://github.com/B1rby/Stack-Based-Buffer-Overflows) by [B1rby](https://github.com/B1rby) is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
